@@ -4,7 +4,7 @@ from water_flow import water_column_height, pressure_gain_from_water_height, \
 from pytest import approx
 import pytest
 
-def test_water_height():
+def test_water_column_height():
 
     assert water_column_height(0.0, 0.0) == approx(0.0)
     assert water_column_height(0.0, 10.0) == approx(7.5)
