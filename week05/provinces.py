@@ -2,7 +2,7 @@ import os
 
 dir_path = os.path.dirname(os.path.abspath(__file__))
 
-filename = os.path.join(dir_path, 'lprovinces.txt')
+filename = os.path.join(dir_path, 'provinces.txt')
 
 def main():
     dir_path = os.path.dirname(os.path.abspath(__file__))

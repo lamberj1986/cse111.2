@@ -19,6 +19,9 @@ CSE 111 Proposal for a Student Chosen Program
     Additional functions will allow for the calcuation of how much additionally needs to be saved
     for the user to reach their target retirement spend.
 
+    For reference, I plan on using some of the calculations found in the following article: 
+    https://www.synchronybank.com/blog/ultimate-guide-to-retirement-calculations/
+
 3. What will you learn from developing this program?
     I believe that I will be able to dig in deeper into the math offerings in Python to see if there are
     any pre-built functions that I can use, or if I will need to build out the modules.
@@ -38,9 +41,9 @@ CSE 111 Proposal for a Student Chosen Program
     pandas, pytest, random, requests, and tkinter.)
 
 5. List the names of functions you will need?
-
-
-    https://www.synchronybank.com/blog/ultimate-guide-to-retirement-calculations/
+    get_future_value(current_age, retire_age, current_value, annual_return=0.06)
+    calculate_current_shortfall(current_age, retire_age, current_value, desired_monthly_retirement_spend)
+    calculate_projected_spend(future_value)
 
     (Remember that the most reusable functions don't get user input and
     don't print results but instead have parameters and return a result.
@@ -54,4 +57,7 @@ CSE 111 Proposal for a Student Chosen Program
     to have parameters and return a result.)
 
 6. List the names of the test functions you will write.
+    test_get_future_value
+    test_calculate_current_shortfall
+    test_calculate_projected_spend
 
