@@ -1,3 +1,7 @@
+# Extra Credit Work:
+#   - Added the import os to get file directory
+#   - Added a discount if the day is Tuesday or Wednesday
+
 # Import the datetime class from the datetime module so that it can be used in this program.
 from datetime import datetime
 from datetime import date
