@@ -1,6 +1,6 @@
 import math
 
-actions = ['Calculate Future Value', 'Calculate Projected Shortfall', 'Calculate Projected Retirement Spend', 'Calcuate Monthly Savings Need' 'Exit']
+actions = ['Calculate Future Value', 'Calculate Projected Shortfall', 'Calculate Projected Retirement Spend', 'Calculate Monthly Savings Need', 'Exit']
 
 def main():
     action_choice = True
@@ -60,11 +60,12 @@ def main():
             projected_shortfall = calculate_current_shortfall(current_age, retire_age, current_value, monthly_spend)
 
             print()
-            if projected_shortfall >= 0:
+            if projected_shortfall <= 0:
+                projected_shortfall = -1 * projected_shortfall
                 print(f'Congrats! You have a projected excess of ${projected_shortfall:,.2f}')
             else:
                 print(f'Unfortunately, you will have a projected shortfall at the beginning of retirement of ${projected_shortfall:,.2f}')
-
+                print()
                 calc_extra_save = input('Would you like to calculate your projected monthly savings need to hit your goals? (Y/N) ').lower()
 
                 if calc_extra_save == 'y':
@@ -75,14 +76,48 @@ def main():
                     print(f'To reach your goal, it is estimated that you need to save an additional ${extra_deposit:,.2f} each month to meet your retirement goals.')
 
         elif action_choice == '3': # Calculate projected spend
+            projected_spend = 0.0
+
+            future_value = float(input('What is the projecte future value of your retirement savings? $'))
+
+            projected_spend = calculate_projected_spend(future_value)
+
+            print()
+            print(f'Your projected monthly spend in retirement is ${projected_spend:,.2f} each month.')
             print()
 
         elif action_choice == '4': # Calculate necessary monthly save
+            savings_need = 0.0
+
+            # Collect necessary information for calculations
+            current_age = int(input('What is your current age? (in whole years) '))
+            retire_age = int(input('At what age do you want to retire? (in whole years) '))
+            future_value = float(input('What is the future value of your retirement accounts? $'))
+            
+            # Checking to see if the user knows their rate of return
+            rate_of_return_known = input('Do you know your estimated annual rate of return? (Y/N) ')
+            rate_of_return_known = rate_of_return_known.lower()
+            
+            if rate_of_return_known == 'y': # If the rate of return is known, add it into the calculation
+                rate_of_return = float(input('What is your annual rate of return? '))
+                
+                if rate_of_return > 1: # Converting the rate of return if the user gives a whole number. 
+                                       # Calculations need to be a decimal to work.
+                    rate_of_return = rate_of_return / 100
+            
+                savings_need = calculate_monthly_deposit(current_age, retire_age, current_value, rate_of_return)
+
+            else: # If the rate of return is not known, use the default
+                savings_need = calculate_monthly_deposit(current_age, retire_age, current_value)
+
+            print()
+            print(f'To reach your desired goals, you will need to save at least ${savings_need:,.2f} each month.')
             print()
 
         elif action_choice == '5': # Exit program
             print()
             print('Thank you for using this calculator.')
+            print()
 
             action_choice = False
 
@@ -105,7 +140,10 @@ def get_future_value(current_age, retire_age, current_value, annual_return=0.06)
     """
     years_to_retire = retire_age - current_age
 
-    future_value = current_value * ((1 + annual_return) ** years_to_retire)
+    # The previous calculation that I used to get this value, before using the math.pow():
+    #       future_value = current_value * ((1 + annual_return) ** years_to_retire)
+    
+    future_value = current_value * math.pow(1 + annual_return, years_to_retire)
 
     return future_value
 
@@ -195,9 +233,12 @@ def calculate_monthly_deposit(current_age, retire_age, future_value, annual_retu
     
     part_one = 1 + (annual_return / 12) # First half of the denominator
     part_two = (12 * years_to_retire) - 1 # Second hald of the denominator
-    denominator = part_one ** part_two # Creating the denominator
 
-    monthly_payment_need = (future_value * (annual_return / 12)) / denominator # 
+    # The previous calculation used to create the denominator, replaced with math.pow():
+    #       denominator = part_one ** part_two
+    # denominator = math.pow(part_one, part_two) # Creating the denominator
+
+    monthly_payment_need = (future_value * (annual_return / 12)) / math.pow(part_one, part_two) 
 
     return monthly_payment_need
 

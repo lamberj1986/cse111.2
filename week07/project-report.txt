@@ -1,0 +1,43 @@
+Second Report for a Student Chosen Project
+
+Do the following:
+
+1. In the table below, list the dates, amount of time spent, and
+description of the work that you did on your project. Follow the example
+that is in the first row of the table below. Include the time you spent
+doing any of the following:
+    a. discussing your project with your teacher, tutor, or fellow students
+    b. researching by reading articles and watching applicable videos
+    c. designing your project by drawing diagrams and other applicable documents
+    d. writing experimental code
+    d. writing code for your project
+    e. writing test functions
+    f. debugging your code
+    g. any other activity that helped you complete your project
+
+=============Time Spent====================
+   Date       (hours)   Description of Work
+----------  ----------  -------------------------
+2024-02-12      0.5     Brainstorming session on additional features to be included
+2024-02-12      1.5     Research conducted on what calculations should be included in the program
+2024-02-13      1.0     Sketch out call graph to fully understand function needs
+2024-02-13      0.5     Watched YouTube on annuites (link below), worked on payment formula
+2024-02-15      1.5     Code the basic structure of the program with most functions outlined
+2024-02-15      2.0     Built calculations for functions
+2024-02-16      1.0     Finished out integrating functions into menu
+2024-02-16      1.5     Built out test file & generated spreadsheet to populate test data
+2024-02-16      1.5     Correct tests that failed, debuged functions/test data
+2024-02-16      1.5     Worked to better understand tkinter module and how to implement it
+2024-02-17      0.5     Peer reviewed application with wife, had her run through UI
+2024-02-17      1.0     Additional research into better menu flow
+2024-02-19      1.0     Integrating more of the math module into the program
+
+=============Links====================
+
+Annuities: https://www.youtube.com/watch?v=HnGdpzGrGtY
+
+tkinter Research: https://realpython.com/python-gui-tkinter/
+
+2. In Canvas, submit this completed text file, your Python program, your
+Python test file, and any project data files such as .txt and .csv files and
+link to video walkthrough if needed.
